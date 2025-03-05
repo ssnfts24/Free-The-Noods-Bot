@@ -4,11 +4,32 @@
   "description": "A professional Discord game bot for Free The Noods.",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "test": "echo \"No tests specified\" && exit 0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YourUsername/free-the-noods-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "game",
+    "rpg",
+    "discord.js"
+  ],
+  "author": "Your Name <you@example.com>",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^14.x.x",
     "dotenv": "^16.x.x",
     "mongoose": "^6.x.x"
+  },
+  "devDependencies": {
+    "nodemon": "^2.x.x"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
