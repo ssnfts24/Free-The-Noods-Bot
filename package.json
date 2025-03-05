@@ -24,7 +24,8 @@
   "dependencies": {
     "discord.js": "^14.x.x",
     "dotenv": "^16.x.x",
-    "mongoose": "^6.x.x"
+    "mongoose": "^6.x.x",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "nodemon": "^2.x.x"

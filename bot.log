@@ -1,0 +1,73 @@
+2025-03-05T18:35:38.512Z [ERROR]: Error loading command file attack.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/attack.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.516Z [ERROR]: Error loading command file battleScarling.js: Error: Cannot find module '../models/scarlingSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/battleScarling.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.516Z [ERROR]: Error loading command file buy.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/buy.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.517Z [ERROR]: Error loading command file collect.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/collect.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.518Z [ERROR]: Error loading command file daily.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/daily.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.518Z [ERROR]: Error loading command file deal.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/deal.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.519Z [INFO]: Loaded command: guild
+2025-03-05T18:35:38.520Z [ERROR]: Error loading command file inventory.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/inventory.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.520Z [ERROR]: Error loading command file leaderboard.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/leaderboard.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.521Z [ERROR]: Error loading command file listings.js: Error: Cannot find module '../utils/marketplaceUtils'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/listings.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.522Z [ERROR]: Error loading command file profile.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/profile.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.523Z [ERROR]: Error loading command file rescue.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/rescue.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.523Z [ERROR]: Error loading command file sell.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/sell.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.523Z [ERROR]: Error loading command file start.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/start.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.524Z [ERROR]: Error loading command file trade.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/trade.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.524Z [ERROR]: Error loading command file upgrade.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/upgrade.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.525Z [ERROR]: Error loading command file use.js: Error: Cannot find module '../models/playerSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/use.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.525Z [INFO]: Loaded event: guildMemberAdd
+2025-03-05T18:35:38.526Z [ERROR]: Error loading event file scarlingSpawner.js: Error: Cannot find module '../models/scarlingSchema'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/events/scarlingSpawner.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T18:35:38.560Z [ERROR]: MongoDB Connection Error: MongoParseError: Protocol and host list are required in "mongodb+srv://SSNFTs:AidenAevaAiyana102110@@$$@noodbotcluster.gbefr.mongodb.net/?retryWrites=true&w=majority&appName=Noodbotcluster"
+2025-03-05T18:35:39.624Z [INFO]: ✅ Logged in as Free The Noods#8325
+2025-03-05T18:38:35.230Z [INFO]: Shutting down gracefully...
