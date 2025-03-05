@@ -28,7 +28,7 @@ const client = new Client({
   ]
 });
 
-// Set up command collection and cooldowns
+// Set up collections for commands and cooldowns
 client.commands = new Collection();
 client.cooldowns = new Collection();
 
@@ -46,7 +46,7 @@ for (const file of commandFiles) {
   }
 }
 
-// Dynamically load event files from the /events folder (if any)
+// Dynamically load event files from the /events folder (if it exists)
 const eventsPath = path.join(__dirname, 'events');
 if (fs.existsSync(eventsPath)) {
   const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -73,6 +73,21 @@ mongoose.connect(process.env.MONGO_URI, {
 })
   .then(() => logger.info('✅ Database Connected'))
   .catch(err => logger.error(`MongoDB Connection Error: ${err}`));
+
+// Optional: Watch commands folder for changes and reload commands dynamically (development use)
+fs.watch(commandsPath, (eventType, filename) => {
+  if (filename && filename.endsWith('.js')) {
+    try {
+      const filePath = path.join(commandsPath, filename);
+      delete require.cache[require.resolve(filePath)];
+      const newCommand = require(filePath);
+      client.commands.set(newCommand.name, newCommand);
+      logger.info(`Reloaded command: ${newCommand.name}`);
+    } catch (err) {
+      logger.error(`Error reloading command ${filename}: ${err}`);
+    }
+  }
+});
 
 // Bot ready event (if not handled in /events)
 client.once('ready', () => {
@@ -119,22 +134,17 @@ client.on('messageCreate', async message => {
 });
 
 // Graceful shutdown handling
-process.on('SIGINT', () => {
-  logger.info('Received SIGINT. Shutting down gracefully.');
+const shutdown = () => {
+  logger.info('Shutting down gracefully...');
   client.destroy();
   mongoose.connection.close(() => {
     logger.info('MongoDB connection closed.');
     process.exit(0);
   });
-});
-process.on('SIGTERM', () => {
-  logger.info('Received SIGTERM. Shutting down gracefully.');
-  client.destroy();
-  mongoose.connection.close(() => {
-    logger.info('MongoDB connection closed.');
-    process.exit(0);
-  });
-});
+};
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
 
 // Log in to Discord with your bot token
 client.login(process.env.TOKEN)
