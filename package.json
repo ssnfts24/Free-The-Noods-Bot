@@ -1,0 +1,14 @@
+{
+  "name": "free-the-noods-bot",
+  "version": "1.0.0",
+  "description": "A professional Discord game bot for Free The Noods.",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.x.x",
+    "dotenv": "^16.x.x",
+    "mongoose": "^6.x.x"
+  }
+}
