@@ -1,4 +1,5 @@
 require('dotenv').config();
+mongoose.set('strictQuery', false);
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const mongoose = require('mongoose');
 const fs = require('fs');
