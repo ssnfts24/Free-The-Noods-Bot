@@ -3,6 +3,20 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+const winston = require('winston');
+
+// Initialize logger with Winston
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.printf(info => `${info.timestamp} [${info.level.toUpperCase()}]: ${info.message}`)
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'bot.log' })
+  ]
+});
 
 // Create a new Discord client with necessary intents
 const client = new Client({
@@ -21,11 +35,35 @@ client.cooldowns = new Collection();
 // Dynamically load all command files from the /commands folder
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
-  const command = require(filePath);
-  client.commands.set(command.name, command);
+  try {
+    const command = require(filePath);
+    client.commands.set(command.name, command);
+    logger.info(`Loaded command: ${command.name}`);
+  } catch (err) {
+    logger.error(`Error loading command file ${file}: ${err}`);
+  }
+}
+
+// Dynamically load event files from the /events folder (if any)
+const eventsPath = path.join(__dirname, 'events');
+if (fs.existsSync(eventsPath)) {
+  const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+  for (const file of eventFiles) {
+    const filePath = path.join(eventsPath, file);
+    try {
+      const event = require(filePath);
+      if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args, client));
+      } else {
+        client.on(event.name, (...args) => event.execute(...args, client));
+      }
+      logger.info(`Loaded event: ${event.name}`);
+    } catch (err) {
+      logger.error(`Error loading event file ${file}: ${err}`);
+    }
+  }
 }
 
 // Connect to MongoDB using the connection string from .env
@@ -33,12 +71,12 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-  .then(() => console.log('✅ Database Connected'))
-  .catch(err => console.error('MongoDB Connection Error:', err));
+  .then(() => logger.info('✅ Database Connected'))
+  .catch(err => logger.error(`MongoDB Connection Error: ${err}`));
 
-// Bot ready event
+// Bot ready event (if not handled in /events)
 client.once('ready', () => {
-  console.log(`✅ Logged in as ${client.user.tag}`);
+  logger.info(`✅ Logged in as ${client.user.tag}`);
 });
 
 // Listen for messages and handle commands
@@ -75,10 +113,29 @@ client.on('messageCreate', async message => {
   try {
     await command.execute(message, args, client);
   } catch (error) {
-    console.error(`Error executing command ${command.name}:`, error);
+    logger.error(`Error executing command ${command.name}: ${error}`);
     message.reply("❌ There was an error executing that command.");
   }
 });
 
+// Graceful shutdown handling
+process.on('SIGINT', () => {
+  logger.info('Received SIGINT. Shutting down gracefully.');
+  client.destroy();
+  mongoose.connection.close(() => {
+    logger.info('MongoDB connection closed.');
+    process.exit(0);
+  });
+});
+process.on('SIGTERM', () => {
+  logger.info('Received SIGTERM. Shutting down gracefully.');
+  client.destroy();
+  mongoose.connection.close(() => {
+    logger.info('MongoDB connection closed.');
+    process.exit(0);
+  });
+});
+
 // Log in to Discord with your bot token
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN)
+  .catch(err => logger.error(`Error logging in: ${err}`));
