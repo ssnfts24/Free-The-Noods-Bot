@@ -145,3 +145,38 @@ Require stack:
 2025-03-05T20:38:43.240Z [ERROR]: MongoDB Connection Error: MongoServerError: bad auth : authentication failed
 2025-03-05T20:41:08.473Z [INFO]: Shutting down gracefully...
 2025-03-05T20:41:08.482Z [INFO]: MongoDB connection closed.
+2025-03-05T20:53:34.114Z [INFO]: Loaded command: attack
+2025-03-05T20:53:34.123Z [INFO]: Loaded command: battle
+2025-03-05T20:53:34.124Z [ERROR]: Error loading command file buy.js: Error: Cannot find module '../utils/marketplaceUtils'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/buy.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T20:53:34.125Z [INFO]: Loaded command: collect
+2025-03-05T20:53:34.125Z [INFO]: Loaded command: daily
+2025-03-05T20:53:34.126Z [INFO]: Loaded command: collect
+2025-03-05T20:53:34.126Z [INFO]: Loaded command: guild
+2025-03-05T20:53:34.127Z [INFO]: Loaded command: inventory
+2025-03-05T20:53:34.127Z [INFO]: Loaded command: leaderboard
+2025-03-05T20:53:34.128Z [ERROR]: Error loading command file listings.js: Error: Cannot find module '../utils/marketplaceUtils'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/listings.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T20:53:34.129Z [INFO]: Loaded command: profile
+2025-03-05T20:53:34.129Z [INFO]: Loaded command: rescue
+2025-03-05T20:53:34.130Z [ERROR]: Error loading command file sell.js: Error: Cannot find module '../utils/marketplaceUtils'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/sell.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T20:53:34.130Z [INFO]: Loaded command: start
+2025-03-05T20:53:34.131Z [ERROR]: Error loading command file trade.js: Error: Cannot find module '../utils/marketplaceUtils'
+Require stack:
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/commands/trade.js
+- /data/data/com.termux/files/home/projects/free-the-noods-bot/bot.js
+2025-03-05T20:53:34.131Z [INFO]: Loaded command: upgrade
+2025-03-05T20:53:34.131Z [INFO]: Loaded command: use
+2025-03-05T20:53:34.132Z [INFO]: Loaded event: guildMemberAdd
+2025-03-05T20:53:34.132Z [INFO]: Loaded event: undefined
+2025-03-05T20:53:35.182Z [INFO]: ✅ Logged in as Free The Noods#8325
+2025-03-05T20:53:35.474Z [ERROR]: MongoDB Connection Error: MongoServerError: bad auth : authentication failed
+2025-03-05T20:57:07.639Z [INFO]: Shutting down gracefully...
+2025-03-05T20:57:07.647Z [INFO]: MongoDB connection closed.
